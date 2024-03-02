@@ -4,6 +4,7 @@ const router = express.Router();
 const path = require("path");
 
 const mealsRouter = require("./api/meals");
+const reservationsRouter = require("./api/reservations");
 const buildPath = path.join(__dirname, "../../dist");
 const port = process.env.PORT || 3000;
 const cors = require("cors");
@@ -20,6 +21,7 @@ app.use(express.json());
 
 app.use(cors());
 
+router.use("/reservations", reservationsRouter);
 router.use("/meals", mealsRouter);
 
 //Respond with all meals in the future (relative to the when datetime) - /future-meals
